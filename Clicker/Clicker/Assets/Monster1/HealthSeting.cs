@@ -5,18 +5,23 @@ using UnityEngine.UI;
 
 public class HealthSeting : MonoBehaviour
 {
-  int maxHealth = 100;
-    int health = 100;  
-
-    public  HealthBarcontroller healhBar;
+  public int maxHealth = 100;
+  public int health = 100;  
+  public int gold = 90;
+  public  HealthBarcontroller healhBar;
+    GameHelper _gameHelper;
    void Start() {
    healhBar.SetMaxHealth(maxHealth);
+    _gameHelper = GameObject.FindObjectOfType<GameHelper>();
    }
+ //Пролучение урона
   public void GetHit(int damage){
         
         int _health = health - damage;
         
         if (_health <= 0){
+             //Выпадение голды
+             _gameHelper.playerGold += gold;
              Destroy(gameObject);
         }
 
@@ -24,4 +29,7 @@ public class HealthSeting : MonoBehaviour
             healhBar.SetHealth(health);
 
     }
+
+ 
+  
 }
