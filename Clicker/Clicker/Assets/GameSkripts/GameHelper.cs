@@ -33,7 +33,7 @@ public class GameHelper : MonoBehaviour
     public  void SpawnMonster()
     {   
 
-        int index = 0;
+        int index = Random.Range(0, monsterPrefabs.Length);
         GameObject monsterObj = Instantiate(monsterPrefabs[index]) as GameObject;
         monsterObj.transform.position = startPosition.position;
       
