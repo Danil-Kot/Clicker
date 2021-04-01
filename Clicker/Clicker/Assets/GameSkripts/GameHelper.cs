@@ -8,18 +8,34 @@ public class GameHelper : MonoBehaviour
     public Text playerGoldUI;
     public int playerGold;
     public GameObject goldPrefab;
+    public GameObject[] monsterPrefabs;
+    public Transform startPosition;
+    public Slider healthBar;
 
-    public void TakeGold (int gold);
+    void Start()
     {
-        playerGold += gold;
+        SpawnMonster();
     }
 
-    
     void Update()
     {
         playerGoldUI.text = playerGold.ToString();
-    }
+    }  
 
+   public void TakeGold(int gold)
+    {
+        playerGold += gold;
+       GameObject obj =  Instantiate(goldPrefab) as GameObject;
+       Destroy(obj,2);
+       SpawnMonster();
+    }
    
-        
+    public  void SpawnMonster()
+    {   
+
+        int index = 0;
+        GameObject monsterObj = Instantiate(monsterPrefabs[index]) as GameObject;
+        monsterObj.transform.position = startPosition.position;
+      
+    }
 }

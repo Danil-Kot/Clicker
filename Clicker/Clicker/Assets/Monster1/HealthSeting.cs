@@ -8,11 +8,15 @@ public class HealthSeting : MonoBehaviour
   public int maxHealth = 100;
   public int health = 100;  
   public int gold = 90;
-  public  HealthBarcontroller healhBar;
-    GameHelper _gameHelper;
+  GameHelper _gameHelper;
+   GameHelper _healthBar;
    void Start() {
-   healhBar.SetMaxHealth(maxHealth);
-    _gameHelper = GameObject.FindObjectOfType<GameHelper>();
+       
+       
+        _gameHelper = GameObject.FindObjectOfType<GameHelper>();
+
+        _gameHelper.healthBar.maxValue = maxHealth;
+        _gameHelper.healthBar.value = maxHealth;
    }
  //Пролучение урона
   public void GetHit(int damage){
@@ -21,12 +25,13 @@ public class HealthSeting : MonoBehaviour
         
         if (_health <= 0){
              //Выпадение голды
-             _gameHelper.playerGold += gold;
+             _gameHelper.TakeGold(gold);
              Destroy(gameObject);
+           
         }
 
             health = _health;
-            healhBar.SetHealth(health);
+          _gameHelper.healthBar.value = health;
 
     }
 
