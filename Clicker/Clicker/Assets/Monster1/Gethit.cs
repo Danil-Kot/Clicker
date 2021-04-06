@@ -6,7 +6,7 @@ public class Gethit : MonoBehaviour
 {
     void OnMouseDown() {
         GetComponent<Animator>().SetTrigger("Hit");
-        GetComponent<HealthSeting>().GetHit(20);
+        GetComponent<HealthSeting>().GetHit(200);
        
     }
 }
