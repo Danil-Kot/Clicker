@@ -12,6 +12,7 @@ public class GameHelper : MonoBehaviour
     public Transform startPosition;
     public Slider healthBar;
 
+    public int PlayerDamage = 150;
     void Start()
     {
         SpawnMonster();
@@ -20,6 +21,7 @@ public class GameHelper : MonoBehaviour
     void Update()
     {
         playerGoldUI.text = playerGold.ToString();
+
     }  
 
    public void TakeGold(int gold)

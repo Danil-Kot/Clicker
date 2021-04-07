@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Gethit : MonoBehaviour
 {
+     GameHelper  _gameHelper;
+    private void Start()
+    {
+        _gameHelper = FindObjectOfType<GameHelper>();
+    }
     void OnMouseDown() {
         GetComponent<Animator>().SetTrigger("Hit");
-        GetComponent<HealthSeting>().GetHit(200);
+        GetComponent<HealthSeting>().GetHit(_gameHelper.PlayerDamage);
        
     }
 }
